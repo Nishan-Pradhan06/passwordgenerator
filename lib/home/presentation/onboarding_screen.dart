@@ -40,10 +40,15 @@ class _OnBoardingState extends State<OnBoarding> {
               itemBuilder: (_, i) {
                 return Column(
                   children: [
-                    Image.asset(
-                      contents[i].image,
-                      height: 600,
-                      // cacheHeight: 1000,
+                    Container(
+                      // height: 700,
+                      margin: const EdgeInsets.only(top: 200),
+                      child: Image.asset(
+                        contents[i].image,
+                        // height: 600,
+                        // cacheHeight: 1000,
+                        alignment: Alignment.center,
+                      ),
                     ),
                   ],
                 );

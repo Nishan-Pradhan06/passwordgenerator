@@ -3,6 +3,7 @@ import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
 // import 'package:randowmpasswordgenerator/core/theme/colors.dart';
 // import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
 import 'package:randowmpasswordgenerator/home/presentation/onboarding_screen.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     Key? key,
     required this.showHome,
   }) : super(key: key);
-  // const MyApp({super.key});
+
 
   // This widget is the root of your application.
   @override
