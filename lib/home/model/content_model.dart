@@ -1,12 +1,10 @@
 class UnBordingContent {
   String image;
-  String title;
-  String discription;
-  UnBordingContent(
-      {required this.image, required this.title, required this.discription});
+
+  UnBordingContent({required this.image});
 }
 
 List<UnBordingContent> contents = [
-  UnBordingContent(image: 'assets/onboarding.png', title: '', discription: ''),
-  UnBordingContent(image: 'assets/introscreen.png', title: '', discription: ''),
+  UnBordingContent(image: 'assets/onboarding.png'),
+  UnBordingContent(image: 'assets/introscreen.png'),
 ];

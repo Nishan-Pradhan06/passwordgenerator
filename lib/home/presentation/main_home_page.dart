@@ -1,8 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:randowmpasswordgenerator/core/theme/colors.dart';
+import 'package:randowmpasswordgenerator/home/presentation/onboarding_screen.dart';
 import 'package:randowmpasswordgenerator/home/widgets/bar.dart';
 import 'package:randowmpasswordgenerator/home/widgets/menu.dart';
 import 'package:randowmpasswordgenerator/home/widgets/password_container.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,8 +22,11 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () {
-            Navigator.pop(context);
+          onPressed: () async {
+            final prefs = await SharedPreferences.getInstance();
+            prefs.setBool('showHome', false);
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const OnBoarding()));
           },
         ),
         shape: const RoundedRectangleBorder(

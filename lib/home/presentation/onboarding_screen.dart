@@ -1,9 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:randowmpasswordgenerator/core/theme/colors.dart';
 import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:randowmpasswordgenerator/home/model/content_model.dart';
-// import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -43,8 +45,6 @@ class _OnBoardingState extends State<OnBoarding> {
                       height: 600,
                       // cacheHeight: 1000,
                     ),
-                    Text(contents[i].title),
-                    Text(contents[i].discription),
                   ],
                 );
               },
@@ -52,17 +52,22 @@ class _OnBoardingState extends State<OnBoarding> {
           ),
           Container(
             margin: const EdgeInsets.only(bottom: 30),
-            // decoration: BoxDecoration(color: brand),
+            height: 20,
             child: SmoothPageIndicator(
               controller: controller,
               count: 2,
               effect: const WormEffect(activeDotColor: BrandColors.kSecondary),
+              onDotClicked: (index) => controller.animateToPage(index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: GestureDetector(
-              onTap: () {
+              onTap: () async {
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setBool('showHome', true);
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const HomePage(),

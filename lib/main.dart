@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
 // import 'package:randowmpasswordgenerator/core/theme/colors.dart';
 // import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
 import 'package:randowmpasswordgenerator/home/presentation/onboarding_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final prefs = await SharedPreferences.getInstance();
+  final showHome = prefs.getBool('showHome') ?? false;
+  runApp(MyApp(showHome: showHome));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool showHome;
+  const MyApp({
+    Key? key,
+    required this.showHome,
+  }) : super(key: key);
+  // const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Password Generator',
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(
@@ -23,8 +34,8 @@ class MyApp extends StatelessWidget {
       //   ),
       //   useMaterial3: true,
       // ),
-      
-      home:  OnBoarding(),
+
+      home: showHome ? const HomePage() : const OnBoarding(),
     );
   }
 }
