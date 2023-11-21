@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:randowmpasswordgenerator/core/theme/colors.dart';
-import 'package:randowmpasswordgenerator/home/model/content_model.dart';
 import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:randowmpasswordgenerator/home/model/content_model.dart';
+// import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -12,6 +14,13 @@ class OnBoarding extends StatefulWidget {
 
 class _OnBoardingState extends State<OnBoarding> {
   int currentIndex = 0;
+  final controller = PageController();
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +28,7 @@ class _OnBoardingState extends State<OnBoarding> {
         children: [
           Expanded(
             child: PageView.builder(
+              controller: controller,
               itemCount: contents.length,
               onPageChanged: (int index) {
                 setState(() {
@@ -42,12 +52,11 @@ class _OnBoardingState extends State<OnBoarding> {
           ),
           Container(
             margin: const EdgeInsets.only(bottom: 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                contents.length,
-                (index) => buildDot(index, context),
-              ),
+            // decoration: BoxDecoration(color: brand),
+            child: SmoothPageIndicator(
+              controller: controller,
+              count: 2,
+              effect: const WormEffect(activeDotColor: BrandColors.kSecondary),
             ),
           ),
           Padding(
@@ -81,17 +90,6 @@ class _OnBoardingState extends State<OnBoarding> {
           )
         ],
       ),
-    );
-  }
-
-  Container buildDot(int index, BuildContext context) {
-    return Container(
-      height: 10,
-      width: currentIndex == index ? 25 : 10,
-      margin: const EdgeInsets.only(right: 5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: BrandColors.kSecondary),
     );
   }
 }

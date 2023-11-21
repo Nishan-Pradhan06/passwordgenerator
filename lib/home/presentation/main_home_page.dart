@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:randowmpasswordgenerator/core/theme/colors.dart';
 import 'package:randowmpasswordgenerator/home/widgets/bar.dart';
-import 'package:randowmpasswordgenerator/home/widgets/buttons.dart';
 import 'package:randowmpasswordgenerator/home/widgets/menu.dart';
 import 'package:randowmpasswordgenerator/home/widgets/password_container.dart';
 
@@ -51,7 +50,6 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 5.0,
           ),
-          Buttons(),
         ],
       ),
     );
