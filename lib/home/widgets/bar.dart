@@ -15,37 +15,28 @@ class _BarContainerState extends State<BarContainer> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
-          Container(
-            height: 5,
-            width: 100,
-            decoration: BoxDecoration(
-              color: BrandColors.kLow,
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
+          _buildBarContainer(BrandColors.kStrong),
           const SizedBox(
-            width: 20,
+            width: 23,
           ),
-          Container(
-            height: 5,
-            width: 100,
-            decoration: BoxDecoration(
-              color: BrandColors.kMedium,
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
+          _buildBarContainer(BrandColors.kStrong),
           const SizedBox(
-            width: 20,
+            width: 23,
           ),
-          Container(
-            height: 5,
-            width: 100,
-            decoration: BoxDecoration(
-              color: BrandColors.kStrong,
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
+          _buildBarContainer(BrandColors.kStrong),
         ],
+        // _buildBarContainer(BrandColors.kSecondary);
+      ),
+    );
+  }
+
+  Widget _buildBarContainer(Color color) {
+    return Container(
+      height: 5,
+      width: 100,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(20),
       ),
     );
   }

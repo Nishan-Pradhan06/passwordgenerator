@@ -1,24 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:randowmpasswordgenerator/core/theme/colors.dart';
 
-class Buttons extends StatefulWidget {
-  const Buttons({super.key});
+class BottomContainer extends StatefulWidget {
+  const BottomContainer({super.key});
 
   @override
-  State<Buttons> createState() => _ButtonsState();
+  State<BottomContainer> createState() => _BottomContainerState();
 }
 
-class _ButtonsState extends State<Buttons> {
+class _BottomContainerState extends State<BottomContainer> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: MediaQuery.of(context).size.width * .4,
-          height: 50,
-          decoration:
-              const BoxDecoration(shape: BoxShape.circle, color: Colors.red),
-        )
-      ],
+    return Container(
+      margin: const EdgeInsets.only(top: 400),
+      // alignment: Alignment.center,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                // height: 50,
+                // width: MediaQuery.of(context).size.width * .8,
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: BrandColors.kSecondary),
+                child: Stack(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.copy),
+                      color: BrandColors.kBackground,
+                    ),
+                    // SizedBox(height: 300,),
+                  ],
+                ),
+              ),
+              Container(
+                // height: 50,
+                // width: MediaQuery.of(context).size.width * .8,
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: BrandColors.kSecondary),
+                child: Stack(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.copy),
+                      color: BrandColors.kBackground,
+                    ),
+                    // SizedBox(height: 300,),
+                  ],
+                ),
+              ),
+              Container(
+                // height: 50,
+                // width: MediaQuery.of(context).size.width * .8,
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: BrandColors.kSecondary),
+                child: Stack(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.copy),
+                      color: BrandColors.kBackground,
+                    ),
+                    // SizedBox(height: 300,),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

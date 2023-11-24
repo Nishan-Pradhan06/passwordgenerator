@@ -57,7 +57,6 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 5.0,
           ),
-          ButtonBar(),
         ],
       ),
     );
