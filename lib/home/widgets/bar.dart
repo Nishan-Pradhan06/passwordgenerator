@@ -17,15 +17,14 @@ class _BarContainerState extends State<BarContainer> {
         children: [
           _buildBarContainer(BrandColors.kStrong),
           const SizedBox(
-            width: 23,
+            width: 20,
           ),
           _buildBarContainer(BrandColors.kStrong),
           const SizedBox(
-            width: 23,
+            width: 20,
           ),
           _buildBarContainer(BrandColors.kStrong),
         ],
-        // _buildBarContainer(BrandColors.kSecondary);
       ),
     );
   }

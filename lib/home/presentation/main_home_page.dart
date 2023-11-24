@@ -47,15 +47,15 @@ class _HomePageState extends State<HomePage> {
         children: [
           PasswordContainer(),
           SizedBox(
-            height: 5.0,
+            height: 10.0,
           ),
           BarContainer(),
           SizedBox(
-            height: 5.0,
+            height: 10.0,
           ),
           SelectionMenu(),
           SizedBox(
-            height: 5.0,
+            height: 10.0,
           ),
         ],
       ),
