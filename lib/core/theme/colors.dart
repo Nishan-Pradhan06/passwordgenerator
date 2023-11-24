@@ -8,4 +8,7 @@ class BrandColors {
   static const Color kLow = Color(0xFFFF3301);
   static const Color kBackground = Color(0xFFF1F5F9);
   static const Color kinner = Color(0xFF026acd);
+  static const Color kdisbleColor = Color(0xFFd6d6d6);
+  static const Color kbtndisbleColor = Color(0xFFf2f3f7);
+
 }

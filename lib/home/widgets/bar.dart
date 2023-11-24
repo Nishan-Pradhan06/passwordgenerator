@@ -12,7 +12,7 @@ class _BarContainerState extends State<BarContainer> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(
         children: [
           _buildBarContainer(BrandColors.kStrong),
@@ -31,6 +31,7 @@ class _BarContainerState extends State<BarContainer> {
 
   Widget _buildBarContainer(Color color) {
     return Container(
+      margin: const EdgeInsets.all(2),
       height: 5,
       width: 100,
       decoration: BoxDecoration(
