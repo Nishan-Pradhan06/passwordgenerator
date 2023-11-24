@@ -11,7 +11,7 @@ class SelectionMenu extends StatefulWidget {
 class _SelectionMenuState extends State<SelectionMenu> {
   // int selectedContainerIndex = 0;
   // Map<String, bool> selectedContainerIndex ={'123':false,'ABC':false,'@#!':false};
-  bool _isSettingEnabled = false;
+  bool _isSettingEnabled = true;
 
   @override
   Widget build(BuildContext context) {

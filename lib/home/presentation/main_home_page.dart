@@ -5,6 +5,7 @@ import 'package:randowmpasswordgenerator/core/theme/colors.dart';
 import 'package:randowmpasswordgenerator/home/presentation/onboarding_screen.dart';
 import 'package:randowmpasswordgenerator/home/widgets/bar.dart';
 import 'package:randowmpasswordgenerator/home/widgets/menu.dart';
+import 'package:randowmpasswordgenerator/home/widgets/bottons.dart';
 import 'package:randowmpasswordgenerator/home/widgets/password_container.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 10.0,
           ),
+          BottonButtons()
         ],
       ),
     );
