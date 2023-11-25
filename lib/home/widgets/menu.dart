@@ -10,8 +10,12 @@ class SelectionMenu extends StatefulWidget {
 
 class _SelectionMenuState extends State<SelectionMenu> {
   // int selectedContainerIndex = 0;
-  // Map<String, bool> selectedContainerIndex ={'123':false,'ABC':false,'@#!':false};
-  bool _isSettingEnabled = true;
+  Map<String, bool> selectedContainerIndex = {
+    '123': true,
+    'ABC': false,
+    '@#!': false
+  };
+  // bool _isSettingEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class _SelectionMenuState extends State<SelectionMenu> {
   }
 
   Container _buildStatusContainer(String labelText, String centerText) {
-    // bool isSettingEnabled = SelectedContainerIndex == index;
+    bool _isSettingEnabled = selectedContainerIndex[centerText]!;
     return Container(
       height: 140,
       width: 170,
@@ -90,19 +94,30 @@ class _SelectionMenuState extends State<SelectionMenu> {
                   ),
                   Transform.scale(
                     scale: 0.89,
-                    child: Switch(
-                      inactiveThumbColor: Colors.white,
-                      trackOutlineColor: const MaterialStatePropertyAll(
-                        Color(0x00ffffff),
-                      ),
-                      inactiveTrackColor: BrandColors.kbtndisbleColor,
-                      activeTrackColor: BrandColors.kinner,
-                      value: _isSettingEnabled,
-                      onChanged: (bool value) {
-                        setState(() {
-                          _isSettingEnabled = value;
-                        });
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: child,
+                        );
                       },
+                      child: Switch(
+                        inactiveThumbColor: Colors.white,
+                        trackOutlineColor: const MaterialStatePropertyAll(
+                          Color(0x00ffffff),
+                        ),
+                        inactiveTrackColor: BrandColors.kbtndisbleColor,
+                        activeTrackColor: BrandColors.kinner,
+                        value: _isSettingEnabled,
+                        onChanged: (bool value) {
+                          setState(() {
+                            // _isSettingEnabled = value;
+                            selectedContainerIndex[centerText] = value;
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ],
