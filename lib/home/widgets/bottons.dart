@@ -10,111 +10,78 @@ class BottonButtons extends StatefulWidget {
 }
 
 class _BottonButtonsState extends State<BottonButtons> {
+  Widget customButton(
+    IconData icon,
+    String label,
+    VoidCallback onPressed, {
+    double iconSize = 24.0,
+  }) {
+    return Column(
+      children: [
+        Container(
+          height: iconSize == 28.0 ? 50 : 80,
+          width: iconSize == 24.0 ? 50 : 80,
+          decoration: const BoxDecoration(
+            color: BrandColors.kSecondary,
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Stack(
+              children: [
+                IconButton(
+                  onPressed: onPressed,
+                  icon: Icon(
+                    icon,
+                    color: Colors.white,
+                    size: iconSize,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Text(
+          label,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: BrandColors.kSecondary,
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 45),
       child: Row(
-        // mainAxisSize: MainAxisSize.m,s
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Column(
-            children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: const BoxDecoration(
-                    color: BrandColors.kSecondary, shape: BoxShape.circle),
-                child: Center(
-                  child: Stack(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.copy_sharp,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const Text(
-                'Copy',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: BrandColors.kSecondary),
-              ),
-            ],
+          customButton(
+            Icons.copy_sharp,
+            'Copy',
+            () {},
           ),
-          Column(
-            children: [
-              Container(
-                height: 80,
-                width: 80,
-                decoration: const BoxDecoration(
-                    color: BrandColors.kSecondary, shape: BoxShape.circle),
-                child: Center(
-                  child: Stack(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.generating_tokens_rounded,
-                          color: Colors.white,
-                          size: 35,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const Text(
-                'Generate',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: BrandColors.kSecondary),
-              ),
-            ],
+          customButton(
+            Icons.generating_tokens_rounded,
+            'Generate',
+            () {},
+            iconSize: 40.0,
           ),
-          Column(
-            children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: const BoxDecoration(
-                    color: BrandColors.kSecondary, shape: BoxShape.circle),
-                child: Center(
-                  child: Stack(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const OnBoarding()));
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back_rounded,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
+          customButton(
+            Icons.arrow_back_rounded,
+            'Back',
+            () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => const OnBoarding(),
                 ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const Text(
-                'Back',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: BrandColors.kSecondary),
-              ),
-            ],
+              );
+            },
           ),
         ],
       ),

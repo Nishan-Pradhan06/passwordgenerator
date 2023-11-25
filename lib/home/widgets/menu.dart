@@ -34,6 +34,7 @@ class _SelectionMenuState extends State<SelectionMenu> {
   }
 
   Container _buildStatusContainer(String labelText, String centerText) {
+    // ignore: no_leading_underscores_for_local_identifiers
     bool _isSettingEnabled = selectedContainerIndex[centerText]!;
     return Container(
       height: 140,
