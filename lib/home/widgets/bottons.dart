@@ -1,3 +1,7 @@
+// ignore_for_file: unnecessary_string_interpolations
+
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:randowmpasswordgenerator/core/theme/colors.dart';
 import 'package:randowmpasswordgenerator/home/presentation/onboarding_screen.dart';
@@ -69,7 +73,10 @@ class _BottonButtonsState extends State<BottonButtons> {
           customButton(
             Icons.generating_tokens_rounded,
             'Generate',
-            () {},
+            () {
+              // final password = generatePassword();
+              // controller.text = password;
+            },
             iconSize: 40.0,
           ),
           customButton(
@@ -86,5 +93,26 @@ class _BottonButtonsState extends State<BottonButtons> {
         ],
       ),
     );
+  }
+
+  String generatePassword({
+    bool hasLetters = true,
+    bool hasNumbers = true,
+    bool hasSpecial = true,
+  }) {
+    const length = 20;
+    const letterLowercase = 'abcdefghijklmnopqrstuvwxyz';
+    const lettersUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+    const specialCharacters = '!@#\$%^&*()';
+
+    String chars = '';
+    chars += '$lettersUppercase$letterLowercase';
+    chars += '$numbers';
+    chars += '$specialCharacters';
+    return List.generate(length, (index) {
+      final indextRandom = Random.secure().nextInt(chars.length);
+      return chars[indextRandom];
+    }).join('');
   }
 }
