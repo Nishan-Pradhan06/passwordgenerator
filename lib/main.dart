@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
 // import 'package:randowmpasswordgenerator/core/theme/colors.dart';
 // import 'package:randowmpasswordgenerator/home/presentation/main_home_page.dart';
-import 'package:randowmpasswordgenerator/home/presentation/onboarding_screen.dart';
+import 'package:randowmpasswordgenerator/view/pages/onboarding_screen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'controller/onboarding_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,22 +24,21 @@ class MyApp extends StatelessWidget {
     required this.showHome,
   }) : super(key: key);
 
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Password Generator',
-      debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
-      //   colorScheme: ColorScheme.fromSeed(
-      //     background: BrandColors.kBackground,
-      //     seedColor: Colors.white,
-      //   ),
-      //   useMaterial3: true,
-      // ),
-
-      home: showHome ? const HomePage() : const OnBoarding(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => OnboardingProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Password Generator',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
+        home: showHome ? const HomePage() : const OnBoarding(),
+      ),
     );
   }
 }

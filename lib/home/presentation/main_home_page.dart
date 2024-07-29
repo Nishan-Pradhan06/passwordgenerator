@@ -2,8 +2,8 @@
 
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:randowmpasswordgenerator/core/theme/colors.dart';
-import 'package:randowmpasswordgenerator/home/presentation/onboarding_screen.dart';
+import 'package:randowmpasswordgenerator/core/colors/colors.dart';
+import 'package:randowmpasswordgenerator/view/pages/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {

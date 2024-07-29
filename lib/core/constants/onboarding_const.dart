@@ -1,8 +1,4 @@
-class UnBordingContent {
-  String image;
-
-  UnBordingContent({required this.image});
-}
+import '../../model/onboarding_model.dart';
 
 List<UnBordingContent> contents = [
   UnBordingContent(image: 'assets/onboarding.png'),
