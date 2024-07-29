@@ -6,6 +6,8 @@ import 'package:randowmpasswordgenerator/core/colors/colors.dart';
 import 'package:randowmpasswordgenerator/view/pages/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../components/password_field.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: BrandColors.kBackground,
       body: const Column(
         children: [
-          TextGeneratedField(),
+          PasswordField(),
           SizedBox(
             height: 10.0,
           ),

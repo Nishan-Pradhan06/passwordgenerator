@@ -1,4 +1,4 @@
-import 'package:randowmpasswordgenerator/model/card_model.dart';
+import '../../model/card_model.dart';
 
 class CardList {
   final List<CardModel> cards = [
