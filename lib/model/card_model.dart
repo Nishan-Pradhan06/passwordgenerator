@@ -1,9 +1,8 @@
-
 class CardModel {
   final String title;
-  final String des;
+  final String label;
   CardModel({
     required this.title,
-    required this.des,
+    required this.label,
   });
 }

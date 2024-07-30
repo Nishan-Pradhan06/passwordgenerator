@@ -5,8 +5,8 @@ import 'package:randowmpasswordgenerator/view/pages/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'controller/onboarding_provider.dart';
 import 'controller/password_provider.dart';
+import 'controller/selection_card_provider.dart';
 import 'controller/shared_preference_provider.dart';
-import 'view/pages/home_e.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => OnboardingProvider()),
         ChangeNotifierProvider(create: (_)=>OnGeneratePassword()),
         ChangeNotifierProvider(create: (_)=> PreferencesProvider()),
+        ChangeNotifierProvider(create: (_)=> SelectionCardProvider()),
       ],
       child: MaterialApp(
         title: 'Password Generator',
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: showHome ? const HomePage() : const OnBoarding(),
+        home: showHome ? const HomePages() : const OnBoarding(),
       ),
     );
   }

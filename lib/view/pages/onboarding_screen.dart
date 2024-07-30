@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:randowmpasswordgenerator/view/pages/home_e.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../controller/onboarding_provider.dart';
 import '../../controller/shared_preference_provider.dart';
@@ -66,7 +64,7 @@ class OnBoarding extends StatelessWidget {
                         prefProvider.setShowHome(true);
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => const HomePages(),
                           ),
                         );
                       },

@@ -1,6 +1,5 @@
 // ignore_for_file: unnecessary_string_interpolations
 
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:randowmpasswordgenerator/core/colors/colors.dart';
 import 'package:randowmpasswordgenerator/view/pages/onboarding_screen.dart';
@@ -43,7 +42,6 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: const Text(
           'Generated Password',
-          style: TextStyle(),
         ),
       ),
       backgroundColor: BrandColors.kBackground,
@@ -160,26 +158,7 @@ class _OnclickButtonsState extends State<OnclickButtons> {
     );
   }
 
-  String generatePassword({
-    bool hasLetters = true,
-    bool hasNumbers = true,
-    bool hasSpecial = true,
-  }) {
-    const length = 20;
-    const letterLowercase = 'abcdefghijklmnopqrstuvwxyz';
-    const lettersUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numbers = '0123456789';
-    const specialCharacters = '!@#\$%^&*()';
-
-    String chars = '';
-    chars += '$lettersUppercase$letterLowercase';
-    chars += '$numbers';
-    chars += '$specialCharacters';
-    return List.generate(length, (index) {
-      final indextRandom = Random.secure().nextInt(chars.length);
-      return chars[indextRandom];
-    }).join('');
-  }
+ 
 }
 
 //selection Button
@@ -289,7 +268,7 @@ class _ButtonSelectState extends State<ButtonSelect> {
                       },
                       child: Switch(
                         inactiveThumbColor: Colors.white,
-                        trackOutlineColor: const MaterialStatePropertyAll(
+                        trackOutlineColor: const WidgetStatePropertyAll(
                           Color(0x00ffffff),
                         ),
                         inactiveTrackColor: BrandColors.kbtndisbleColor,

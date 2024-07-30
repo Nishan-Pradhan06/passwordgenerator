@@ -4,15 +4,15 @@ class CardList {
   final List<CardModel> cards = [
     CardModel(
       title: "123",
-      des: "Digits",
+      label: "Digits",
     ),
     CardModel(
       title: "ABC",
-      des: "Characters",
+      label: "Characters",
     ),
     CardModel(
       title: "@#!",
-      des: "Symbols",
+      label: "Symbols",
     ),
   ];
 }
