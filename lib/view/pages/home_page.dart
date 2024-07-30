@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:randowmpasswordgenerator/controller/shared_preference_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:randowmpasswordgenerator/controller/selection_card_provider.dart';
 import 'package:randowmpasswordgenerator/view/components/button_components.dart';
+import 'package:randowmpasswordgenerator/view/components/dynamic_bar.dart';
+import '../../controller/clipboard_provider.dart';
+import '../../controller/password_provider.dart';
+import '../../controller/shared_preference_provider.dart';
 import '../../core/constants/card_list.dart';
 import '../components/appbar.dart';
 import '../components/selection_card.dart';
 import '../components/password_field.dart';
-import 'package:provider/provider.dart';
-
 import 'onboarding_screen.dart';
 
 class HomePages extends StatelessWidget {
@@ -23,6 +26,20 @@ class HomePages extends StatelessWidget {
         child: Column(
           children: [
             const PasswordField(),
+            const SizedBox(height: 16.0),
+            Consumer<SelectionCardProvider>(
+              builder: (context, provider, child) {
+                final barColors = provider.getBarColors();
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DynamicBarComponents(color: barColors[0]),
+                    DynamicBarComponents(color: barColors[1]),
+                    DynamicBarComponents(color: barColors[2]),
+                  ],
+                );
+              },
+            ),
             const SizedBox(height: 16.0),
             Expanded(
               child: GridView.builder(
@@ -43,26 +60,40 @@ class HomePages extends StatelessWidget {
                 },
               ),
             ),
-            Consumer<PreferencesProvider>(
-              builder: (context, prefProvider, child) {
+            Consumer3<SelectionCardProvider, OnGeneratePassword,
+                ClipboardProvider>(
+              builder: (context, cardProvider, passwordProvider,
+                  clipboardProvider, child) {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ButtonComponents(
                       icon: Icons.copy,
                       label: 'Copy',
-                      onPressed: () {},
+                      onPressed: () {
+                        final password = passwordProvider.text ?? '';
+                        clipboardProvider.copyToClipboard(context, password);
+                      },
                     ),
                     ButtonComponents(
                       icon: Icons.generating_tokens,
                       label: 'Generate',
-                      onPressed: () {},
+                      onPressed: () {
+                        final newPassword = passwordProvider.generatePassword(
+                          hasLetters: cardProvider.isSettingEnabled(0),
+                          hasNumbers: cardProvider.isSettingEnabled(1),
+                          hasSpecial: cardProvider.isSettingEnabled(2),
+                        );
+                        passwordProvider.updatePassword(newPassword);
+                      },
                       iconSize: 30,
                     ),
                     ButtonComponents(
                       icon: Icons.arrow_back,
                       label: 'Back',
                       onPressed: () {
+                        final prefProvider =
+                            context.read<PreferencesProvider>();
                         prefProvider.setShowHome(false);
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(

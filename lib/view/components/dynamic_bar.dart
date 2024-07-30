@@ -7,9 +7,9 @@ class DynamicBarComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(2),
-      height: 5,
-      width: 100,
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      height: 7,
+      width: 110,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),

@@ -7,6 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       elevation: 8.0,
       foregroundColor: Colors.black,
       backgroundColor: BrandColors.kSecondary,

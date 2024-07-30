@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:randowmpasswordgenerator/core/colors/colors.dart';
 
 class SelectionCardProvider with ChangeNotifier {
   final Map<int, bool> _toggleStates = {};
@@ -34,5 +35,31 @@ class SelectionCardProvider with ChangeNotifier {
   Future<void> _saveToggleState(int index, bool state) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool(index.toString(), state);
+  }
+
+  int get enabledToggleCount {
+    return _toggleStates.values.where((state) => state).length;
+  }
+
+  List<Color> getBarColors() {
+    final enabledCount = enabledToggleCount;
+    List<Color> colors = [
+      BrandColors.kdisbleColor,
+      BrandColors.kdisbleColor,
+      BrandColors.kdisbleColor,
+    ];
+
+    if (enabledCount == 1) {
+      colors[0] = BrandColors.kLow;
+    } else if (enabledCount == 2) {
+      colors[0] = BrandColors.kMedium;
+      colors[1] = BrandColors.kMedium;
+    } else if (enabledCount >= 3) {
+      colors[0] = BrandColors.kStrong;
+      colors[1] = BrandColors.kStrong;
+      colors[2] = BrandColors.kStrong;
+    }
+
+    return colors;
   }
 }
