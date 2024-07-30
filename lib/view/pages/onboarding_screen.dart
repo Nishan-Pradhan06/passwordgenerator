@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -14,12 +12,16 @@ class OnBoarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Consumer<OnboardingProvider>(
         builder: (context, onboardProvider, child) {
           return Column(
             children: [
               Expanded(
+                flex: 3,
                 child: PageView.builder(
                   controller: onboardProvider.pageController,
                   itemCount: contents.length,
@@ -28,12 +30,16 @@ class OnBoarding extends StatelessWidget {
                   },
                   itemBuilder: (_, i) {
                     return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          margin: const EdgeInsets.only(top: 200),
+                          margin: EdgeInsets.only(
+                              top: screenHeight * 0.1), // Adjust top margin
                           child: Image.asset(
                             contents[i].image,
-                            alignment: Alignment.center,
+                            width: screenWidth * 0.8, // Adjust width as needed
+                            fit: BoxFit
+                                .contain, // Ensure the image scales properly
                           ),
                         ),
                       ],
@@ -42,11 +48,12 @@ class OnBoarding extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(bottom: 30),
+                margin: EdgeInsets.symmetric(
+                    vertical: screenHeight * 0.02), // Adjust vertical margin
                 height: 20,
                 child: SmoothPageIndicator(
                   controller: onboardProvider.pageController,
-                  count: 2,
+                  count: contents.length,
                   effect:
                       const WormEffect(activeDotColor: BrandColors.kSecondary),
                   onDotClicked: (index) => onboardProvider.pageController
@@ -56,7 +63,8 @@ class OnBoarding extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+                padding: EdgeInsets.symmetric(
+                    horizontal: screenWidth * 0.1), // Adjust horizontal padding
                 child: Consumer<PreferencesProvider>(
                   builder: (context, prefProvider, child) {
                     return GestureDetector(
@@ -69,7 +77,9 @@ class OnBoarding extends StatelessWidget {
                         );
                       },
                       child: Container(
-                        margin: const EdgeInsets.only(bottom: 60),
+                        margin: EdgeInsets.only(
+                            bottom:
+                                screenHeight * 0.05), // Adjust bottom margin
                         height: 45,
                         width: double.infinity,
                         decoration: const BoxDecoration(
@@ -89,7 +99,7 @@ class OnBoarding extends StatelessWidget {
                     );
                   },
                 ),
-              )
+              ),
             ],
           );
         },

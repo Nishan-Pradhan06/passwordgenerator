@@ -9,7 +9,7 @@ class DynamicBarComponents extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 4),
       height: 7,
-      width: 110,
+      width: 100,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),

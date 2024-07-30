@@ -17,11 +17,16 @@ class ButtonComponents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final buttonSize =
+        screenWidth * 0.14; // Adjust the button size proportionally
+    final textSize = screenWidth * 0.04; // Adjust the text size proportionally
+
     return Column(
       children: [
         Container(
-          height: iconSize == 28.0 ? 50 : 80,
-          width: iconSize == 24.0 ? 50 : 80,
+          height: buttonSize,
+          width: buttonSize,
           decoration: const BoxDecoration(
             color: BrandColors.kSecondary,
             shape: BoxShape.circle,
@@ -32,19 +37,18 @@ class ButtonComponents extends StatelessWidget {
               icon: Icon(
                 icon,
                 color: Colors.white,
-                size: iconSize,
+                size: iconSize, // Adjust icon size if necessary
               ),
             ),
           ),
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        SizedBox(height: screenWidth * 0.02),
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.bold,
             color: BrandColors.kSecondary,
+            fontSize: textSize, // Adjust text size proportionally
           ),
         ),
       ],

@@ -8,25 +8,35 @@ class PasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Define proportional height and width for the container
+    final containerHeight = screenHeight * 0.2; // 20% of the screen height
+    final containerPadding = screenWidth * 0.05; // 5% of the screen width
+    final textSize = screenWidth * 0.06; // Adjust text size proportionally
+
     return Container(
-      height: MediaQuery.of(context).size.height / 4.5,
+      height: containerHeight,
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: BrandColors.kSecondary,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.all(
+            Radius.circular(screenWidth * 0.05)), // 5% of screen width
       ),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(50.0),
+          padding: EdgeInsets.all(containerPadding),
           child: Consumer<OnGeneratePassword>(
             builder: (context, passwordProvider, child) {
               return Text(
                 passwordProvider.text ?? "No Password",
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  fontSize: 30,
+                  fontSize: textSize,
                 ),
+                textAlign: TextAlign.center,
               );
             },
           ),
