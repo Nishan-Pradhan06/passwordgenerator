@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:randowmpasswordgenerator/controller/shared_preference_provider.dart';
+import 'package:randowmpasswordgenerator/view/components/button_components.dart';
 import '../../core/constants/card_list.dart';
 import '../components/appbar.dart';
 import '../components/selection_card.dart';
 import '../components/password_field.dart';
+import 'package:provider/provider.dart';
+
+import 'onboarding_screen.dart';
 
 class HomePages extends StatelessWidget {
   const HomePages({super.key});
@@ -37,6 +42,38 @@ class HomePages extends StatelessWidget {
                   );
                 },
               ),
+            ),
+            Consumer<PreferencesProvider>(
+              builder: (context, prefProvider, child) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ButtonComponents(
+                      icon: Icons.copy,
+                      label: 'Copy',
+                      onPressed: () {},
+                    ),
+                    ButtonComponents(
+                      icon: Icons.generating_tokens,
+                      label: 'Generate',
+                      onPressed: () {},
+                      iconSize: 30,
+                    ),
+                    ButtonComponents(
+                      icon: Icons.arrow_back,
+                      label: 'Back',
+                      onPressed: () {
+                        prefProvider.setShowHome(false);
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const OnBoarding(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              },
             ),
           ],
         ),
