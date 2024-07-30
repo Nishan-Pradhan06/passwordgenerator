@@ -31,6 +31,7 @@ class HomePages extends StatelessWidget {
                 itemCount: cardList.cards.length,
                 itemBuilder: (context, index) {
                   return SelectionCard(
+                    index: index,
                     centerText: cardList.cards[index].title,
                     labelText: cardList.cards[index].label,
                   );

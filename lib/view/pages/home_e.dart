@@ -340,49 +340,65 @@ class _DyanamicBarState extends State<DyanamicBar> {
 
 //textfield
 
-class TextGeneratedField extends StatefulWidget {
-  const TextGeneratedField({Key? key}) : super(key: key);
+// class TextGeneratedField extends StatefulWidget {
+//   const TextGeneratedField({Key? key}) : super(key: key);
 
-  @override
-  State<TextGeneratedField> createState() => _TextGeneratedFieldState();
-}
+//   @override
+//   State<TextGeneratedField> createState() => _TextGeneratedFieldState();
+// }
 
-class _TextGeneratedFieldState extends State<TextGeneratedField> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Container(
-        height: MediaQuery.of(context).size.height / 4.5,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-            color: BrandColors.kSecondary,
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: const Center(
-          child: Padding(
-            padding: EdgeInsets.all(50.0),
-            // child: TextField(
-            //   controller: controller,
-            //   readOnly: true,
-            //   enableInteractiveSelection: false,
-            //   decoration: const InputDecoration(
-            //     border: InputBorder.none,
-            //     labelStyle: TextStyle(
-            //         fontSize: 30,
-            //         color: Colors.white,
-            //         fontWeight: FontWeight.bold),
-            //   ),
-            // ),
-            child: Text(
-              "dfS6IOF@!D4",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: 30),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class _TextGeneratedFieldState extends State<TextGeneratedField> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.all(12.0),
+//       child: Container(
+//         height: MediaQuery.of(context).size.height / 4.5,
+//         width: double.infinity,
+//         decoration: const BoxDecoration(
+//             color: BrandColors.kSecondary,
+//             borderRadius: BorderRadius.all(Radius.circular(20))),
+//         child: const Center(
+//           child: Padding(
+//             padding: EdgeInsets.all(50.0),
+//             // child: TextField(
+//             //   controller: controller,
+//             //   readOnly: true,
+//             //   enableInteractiveSelection: false,
+//             //   decoration: const InputDecoration(
+//             //     border: InputBorder.none,
+//             //     labelStyle: TextStyle(
+//             //         fontSize: 30,
+//             //         color: Colors.white,
+//             //         fontWeight: FontWeight.bold),
+//             //   ),
+//             // ),
+//             child: Text(
+//               "dfS6IOF@!D4",
+//               style: TextStyle(
+//                   fontWeight: FontWeight.bold,
+//                   color: Colors.white,
+//                   fontSize: 30),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//  leading: Consumer<PreferencesProvider>(
+//         builder: (context, prefProvider, child) {
+//           return IconButton(
+//             icon: const Icon(Icons.arrow_back_rounded),
+//             onPressed: () async {
+//               prefProvider.setShowHome(false);
+//               Navigator.of(context).pushReplacement(
+//                 MaterialPageRoute(
+//                   builder: (context) => const OnBoarding(),
+//                 ),
+//               );
+//             },
+//           );
+//         },
+//       ),

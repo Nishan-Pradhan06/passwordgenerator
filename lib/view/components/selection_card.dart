@@ -4,11 +4,13 @@ import '../../controller/selection_card_provider.dart';
 import '../../core/colors/colors.dart';
 
 class SelectionCard extends StatelessWidget {
+  final int index;
   final String centerText;
   final String labelText;
 
   const SelectionCard({
     Key? key,
+    required this.index,
     required this.centerText,
     required this.labelText,
   }) : super(key: key);
@@ -16,8 +18,7 @@ class SelectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<SelectionCardProvider>(context);
-    final isSettingEnabled = provider.isSettingEnabled;
-
+    final isSettingEnabled = provider.isSettingEnabled(index);
     return Container(
       decoration: BoxDecoration(
         border: isSettingEnabled
@@ -90,7 +91,7 @@ class SelectionCard extends StatelessWidget {
                         activeTrackColor: BrandColors.kinner,
                         value: isSettingEnabled,
                         onChanged: (bool value) {
-                          provider.toggleSetting();
+                          provider.toggleSetting(index);
                         },
                       ),
                     ),
